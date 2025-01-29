@@ -6,19 +6,11 @@
     <title>Contact Eman</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root {
+         /* CSS */
+         :root {
             --primary: #6c5ce7;
             --secondary: #a66efa;
             --accent: #ff7675;
-            --text: #2d3436;
-            --bg: #ffffff;
-            --card-bg: #f8f9fa;
-        }
-
-        [data-theme="dark"] {
-            --text: #ffffff;
-            --bg: #2d3436;
-            --card-bg: #3a3f44;
         }
 
         * {
@@ -26,22 +18,21 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', sans-serif;
-            transition: background 0.3s, color 0.3s;
         }
 
         body {
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
+            background: linear-gradient(135deg, #1a1a1a, #2d3436);
+            color: white;
         }
 
         .header {
-            padding: 1rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            padding: 0.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             position: sticky;
             top: 0;
-            background: var(--bg);
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            
         }
 
         .nav {
@@ -49,14 +40,21 @@
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+        
+            
+        }
+        .nav a{
+            text-decoration: none;
+            margin-right: 20px;
+            color: white;
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 1rem;
             font-weight: bold;
-            color: var(--primary);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
+
 
         .theme-btn {
             background: none;
@@ -113,7 +111,7 @@
 <body>
     <header class="header">
         <nav class="nav">
-            <div class="logo">JD</div>
+            <div class="logo">Eman.dev</div>
             <div class="nav-links">
                 <button id="themeToggle" class="theme-btn">
                     <i class="fas fa-moon"></i>

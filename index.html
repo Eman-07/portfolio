@@ -6,19 +6,11 @@
     <title>Muhammad Eman | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root {
+         /* CSS */
+         :root {
             --primary: #6c5ce7;
             --secondary: #a66efa;
             --accent: #ff7675;
-            --text: #2d3436;
-            --bg: #ffffff;
-            --card-bg: #f8f9fa;
-        }
-
-        [data-theme="dark"] {
-            --text: #ffffff;
-            --bg: #2d3436;
-            --card-bg: #3a3f44;
         }
 
         * {
@@ -26,23 +18,21 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', sans-serif;
-            transition: background 0.3s, color 0.3s;
         }
 
         body {
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
+            background: linear-gradient(135deg, #1a1a1a, #2d3436);
+            color: white;
         }
 
         .header {
             background: linear-gradient(45deg, var(--primary), var(--secondary));
-            padding: 1rem;
+            padding: 0.5rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             position: sticky;
             top: 0;
             z-index: 100;
-
+            
         }
 
         .nav {
@@ -50,14 +40,19 @@
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            /* align-items: center; */
+            
+        }
+        .nav a{
+            text-decoration: none;
         }
 
         .logo {
-            font-size: 2rem;
+            font-size: 1rem;
             font-weight: bold;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
+
 
         .hero {
             text-align: center;
@@ -113,9 +108,9 @@
         <nav class="nav">
             <div class="logo">Eman.dev</div>
             <div class="nav-links">
-                <!-- <button id="themeToggle" class="theme-btn">
+                <button id="themeToggle" class="theme-btn">
                     <i class="fas fa-moon"></i>
-                </button> -->
+                </button>
                 <a href="index.html" class="contact-link">Home</a>
                 <a href="downloadcenter.html" class="contact-link">Apps</a>
                 <a href="contact.html" class="contact-link">Contact</a>
