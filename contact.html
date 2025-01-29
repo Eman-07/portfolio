@@ -1,55 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhmmaad Eman | Contact</title>
-    <link rel="stylesheet" href="contact.css">
+    <title>Contact Eman</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a66efa;
+            --accent: #ff7675;
+            --text: #2d3436;
+            --bg: #ffffff;
+            --card-bg: #f8f9fa;
+        }
+
+        [data-theme="dark"] {
+            --text: #ffffff;
+            --bg: #2d3436;
+            --card-bg: #3a3f44;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .header {
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            background: var(--bg);
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .theme-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+        .contact-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            text-decoration: none;
+            color: var(--text);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .social-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .social-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-
 <body>
-
-    <div class="parent">
-        <nav>
-            <div id="logo">
-                <h1 onclick="location.href='index.html'"><span>Eman</span>.dev</h1>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">JD</div>
+            <div class="nav-links">
+                <button id="themeToggle" class="theme-btn">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="index.html" class="contact-link">Home</a>
+                <a href="downloadcenter.html" class="contact-link">Apps</a>
+                <a href="contact.html" class="contact-link">Contact</a>
             </div>
-
-            <ul>
-                <li>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="downloadcenter.html">Apps</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                </li>
-            </ul>
         </nav>
+    </header>
 
-
-        <h1>Click on Logo to visit my profile on that Platform</h1>
-
-
-
-
-        <div class="contact first">
-            <!-- <img  class="imgz" src="images/insta.webp" alt=""  height="200px" onclick="location.href='https://www.instagram.com/muhammad_eman1?igsh=c2xwbmNmNmtxdTY0'" > -->
-            <img class="imgz" src="images/linkedin.png" alt="" height="200px" onclick="location.href='https://www.linkedin.com/in/muhammad-eman-644aaa30b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'">
-            <img class="imgz" src="images/git.png" alt="" height="200px"  onclick="location.href='https://github.com/Eman-07'">
-            <!-- <img class="imgz" src="images/fiverr.png" alt="" height="200px"  onclick="location.href='https://www.fiverr.com/m_eman?public_mode=true'"> -->
-            <!-- <img class="imgz" src="images/facebook.png" alt="" height="200px" onclick="location.href='https://www.facebook.com/m.eman.148?mibextid=ZbWKwL'"> -->
+    <section class="contact-section">
+        <h1>Connect With Me</h1>
+        <div class="social-grid">
+            <a href="https://github.com/Eman-07" target="_blank" class="social-card">
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/muhammad-emandev/" target="_blank" class="social-card">
+                <i class="fab fa-linkedin"></i>
+                <span>LinkedIn</span>
+            </a>
+            <a href="https://www.youtube.com/@muhammademan9985" target="_blank" class="social-card">
+                <i class="fab fa-youtube"></i>
+                <span>YouTube</span>
+            </a>
+            <a href="https://twitter.com" target="_blank" class="social-card">
+                <i class="fab fa-twitter"></i>
+                <span>Twitter</span>
+            </a>
+            <a href="mailto:memanmaan44@gmail.com" class="social-card">
+                <i class="fas fa-envelope"></i>
+                <span>Email</span>
+            </a>
         </div>
+    </section>
 
-        <!-- <div class="contact second">
+    <script>
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
 
-        </div> -->
+        function toggleTheme() {
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+            localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        }
 
-    </div>
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        body.setAttribute('data-theme', savedTheme);
+        themeToggle.innerHTML = savedTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
 
-
-
-    <script src="contact.js">
-
+        themeToggle.addEventListener('click', toggleTheme);
     </script>
 </body>
-
 </html>
