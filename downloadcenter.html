@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Eman | Download Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* CSS */
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a66efa;
+            --accent: #ff7675;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a1a, #2d3436);
+            color: white;
+        }
+
+        .header {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            padding: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+        }
+        .nav a{
+            text-decoration: none;;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 5rem 1rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            margin-bottom: -50px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: slideUp 1s ease;
+        }
+
+        .app-grid {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .app-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .app-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .download-btn {
+            background: linear-gradient(45deg, var(--accent), #ff6b6b);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+            margin-top: 1rem;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: linear-gradient(45deg, #2d3436, #1a1a1a);
+            padding: 3rem 1rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .app-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">Eman.dev</div>
+            <div class="nav-links">
+                <a href="index.html" style="color: white">Home</a>
+                <a href="downloadcenter.html" style="color: white; margin-left: 2rem">Apps</a>
+                <a href="contact.html" style="color: white; margin-left: 2rem">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Discover Amazing Apps</h1>
+        <p>Download premium mobile experiences, crafted with passion</p>
+    </section>
+
+    <main class="app-grid">
+        <!-- App Card 1 -->
+        <div class="app-card">
+            <img src="icon.png" alt="App Icon" class="app-icon">
+            <h2>ToDo's</h2>
+            <p>Minimalistic to do tasks Manager with simple UI & no ads</p>
+            <button class="download-btn" onclick="downloadApp('ToDo.apk')">
+                <i class="fas fa-download"></i> Download Now<br>(*Android)
+            </button>
+        </div>
+
+        <!-- Add more app cards here -->
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <h3>Eman.dev</h3>
+            <p>© 2023 All rights reserved</p>
+            <div style="margin-top: 1rem">
+                <a href="#contact" style="color: white; text-decoration: none">Contact Us</a> | 
+                <a href="#privacy" style="color: white; text-decoration: none">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript
+        function downloadApp(apkFileName) {
+            // Create temporary link
+            const link = document.createElement('a');
+            link.href = apkFileName;
+            link.download = apkFileName;
+            
+            // Add to document and click
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Show confirmation
+            Swal.fire({
+                icon: 'success',
+                title: 'Download Started!',
+                text: 'Your app will begin downloading shortly',
+                confirmButtonColor: '#6c5ce7'
+            });
+        }
+
+        // Add smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    
+    <!-- Add SweetAlert for beautiful alerts -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
