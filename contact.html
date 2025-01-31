@@ -71,6 +71,12 @@
             text-align: center;
         }
 
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
         .social-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -113,9 +119,9 @@
         <nav class="nav">
             <div class="logo">Eman.dev</div>
             <div class="nav-links">
-                <button id="themeToggle" class="theme-btn">
+                <!-- <button id="themeToggle" class="theme-btn">
                     <i class="fas fa-moon"></i>
-                </button>
+                </button> -->
                 <a href="index.html" class="contact-link">Home</a>
                 <a href="downloadcenter.html" class="contact-link">Apps</a>
                 <a href="contact.html" class="contact-link">Contact</a>
@@ -147,7 +153,21 @@
                 <span>Email</span>
             </a>
         </div>
+
+
+        <footer>
+            <div class="footer-content">
+                <h3>Eman.dev</h3>
+                <p>© 2025 All rights reserved</p>
+                <div style="margin-top: 1rem">
+                    <a href="contact.html" style="color: white; text-decoration: none">Contact</a> | 
+                    <a href="#privacy" style="color: white; text-decoration: none">Privacy Policy</a>
+                </div>
+            </div>
+        </footer>
     </section>
+
+    
 
     <script>
         // Dark Mode Toggle
