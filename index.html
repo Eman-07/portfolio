@@ -21,7 +21,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #1a1a1a, #2d3436);
+            background: black;
             color: white;
         }
 
@@ -92,10 +92,33 @@
             margin-left: 2rem;
         }
 
+    
         .contact-link {
+            margin-left: 2rem;
             color: var(--text);
             text-decoration: none;
-            margin-left: 2rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .contact-link:hover::after {
+            width: 100%;
+        }
+
+        .contact-link:hover {
+            color: var(--accent);
         }
 
         @media (max-width: 768px) {

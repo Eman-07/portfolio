@@ -111,6 +111,33 @@
             transition: transform 0.3s;
             margin-top: 1rem;
         }
+        .contact-link {
+            margin-left: 2rem;
+            color: var(--text);
+            text-decoration: none;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .contact-link:hover::after {
+            width: 100%;
+        }
+
+        .contact-link:hover {
+            color: var(--accent);
+        }
 
         .download-btn:hover {
             transform: scale(1.05);
@@ -149,9 +176,9 @@
         <nav class="nav">
             <div class="logo">Eman.dev</div>
             <div class="nav-links">
-                <a href="index.html" style="color: white">Home</a>
-                <a href="downloadcenter.html" style="color: white; margin-left: 2rem">Apps</a>
-                <a href="contact.html" style="color: white; margin-left: 2rem">Contact</a>
+                <a class= "contact-link" href="index.html" style="color: white">Home</a>
+                <a class= "contact-link" href="downloadcenter.html" style="color: white; margin-left: 2rem">Apps</a>
+                <a class= "contact-link" href="contact.html" style="color: white; margin-left: 2rem">Contact</a>
             </div>
         </nav>
     </header>

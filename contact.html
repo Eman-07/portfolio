@@ -71,6 +71,33 @@
             text-align: center;
         }
 
+        .contact-link {
+            color: var(--text);
+            text-decoration: none;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .contact-link:hover::after {
+            width: 100%;
+        }
+
+        .contact-link:hover {
+            color: var(--accent);
+        }
+
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -122,9 +149,9 @@
                 <!-- <button id="themeToggle" class="theme-btn">
                     <i class="fas fa-moon"></i>
                 </button> -->
-                <a href="index.html" class="contact-link">Home</a>
-                <a href="downloadcenter.html" class="contact-link">Apps</a>
-                <a href="contact.html" class="contact-link">Contact</a>
+                <a class= "contact-link" href="index.html" class="contact-link">Home</a>
+                <a class= "contact-link" href="downloadcenter.html" class="contact-link">Apps</a>
+                <a class= "contact-link" href="contact.html" class="contact-link">Contact</a>
             </div>
         </nav>
     </header>
