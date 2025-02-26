@@ -5,34 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammad Eman | Download Center</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;400;600&display=swap">
     <style>
-        /* CSS */
         :root {
-            --primary: #6c5ce7;
-            --secondary: #a66efa;
-            --accent: #ff7675;
+            --primary: #0ee7ff;
+            --secondary: #6f42c1;
+            --accent: #fd2155;
+            --dark: #0a0a1a;
+            --darker: #050510;
+            --light: #e9f1fe;
+            --card-bg: rgba(10, 10, 40, 0.6);
+            --neon-glow: 0 0 10px var(--primary), 0 0 20px var(--primary);
+            --accent-glow: 0 0 10px var(--accent), 0 0 20px var(--accent);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Rajdhani', sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, #1a1a1a, #2d3436);
-            color: white;
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            color: var(--light);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(111, 66, 193, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(14, 231, 255, 0.15) 0%, transparent 30%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .header {
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            padding: 0.5rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            position: sticky;
+            background: rgba(5, 5, 16, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 100;
-            
+            border-bottom: 1px solid rgba(14, 231, 255, 0.3);
         }
 
         .nav {
@@ -41,83 +74,53 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            /* padding: auto; */
-            
-        }
-        .nav a{
-            text-decoration: none;;
         }
 
         .logo {
-            font-size: 1rem;
+            font-size: 1.5rem;
             font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            padding: 0.5rem 0;
+            color: var(--primary);
+            text-shadow: var(--neon-glow);
+            transition: all 0.3s ease;
         }
 
-        .hero {
-            text-align: center;
-            padding: 5rem 1rem;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-            margin-bottom: -50px;
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+            box-shadow: var(--neon-glow);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s ease;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: slideUp 1s ease;
+        .logo:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
         }
 
-        .app-grid {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 1rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        .nav-links {
+            display: flex;
             gap: 2rem;
         }
 
-        .app-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-
-        .app-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .app-icon {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 1rem;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .download-btn {
-            background: linear-gradient(45deg, var(--accent), #ff6b6b);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.3s;
-            margin-top: 1rem;
-        }
-        .contact-link {
-            margin-left: 2rem;
-            color: var(--text);
+        .nav a {
             text-decoration: none;
+            color: var(--light);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .contact-link {
             position: relative;
             padding: 0.5rem 0;
-            transition: color 0.3s ease;
         }
 
         .contact-link::after {
@@ -128,25 +131,255 @@
             width: 0;
             height: 2px;
             background: var(--accent);
+            box-shadow: var(--accent-glow);
             transition: width 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--accent);
+            text-shadow: var(--accent-glow);
         }
 
         .contact-link:hover::after {
             width: 100%;
         }
 
-        .contact-link:hover {
-            color: var(--accent);
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 200;
+        }
+
+        .hamburger span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 8rem 2rem 6rem;
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(var(--secondary), 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(var(--primary), 0.15) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, var(--darker));
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--light);
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .app-grid {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .app-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(14, 231, 255, 0.2);
+            border-radius: 15px;
+            padding: 2.5rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(14, 231, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.8s ease;
+        }
+
+        .app-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(14, 231, 255, 0.2);
+        }
+
+        .app-card:hover::before {
+            animation: shine 1.5s;
+        }
+
+        @keyframes shine {
+            0% {
+                left: -100%;
+                top: -100%;
+            }
+            100% {
+                left: 100%;
+                top: 100%;
+            }
+        }
+
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem;
+            border-radius: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 0 10px rgba(14, 231, 255, 0.5);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            border: 2px solid rgba(14, 231, 255, 0.3);
+            background: var(--dark);
+            padding: 5px;
+        }
+
+        .app-card:hover .app-icon {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(14, 231, 255, 0.8);
+        }
+
+        .app-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--light);
+            position: relative;
+            display: inline-block;
+        }
+
+        .app-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 2px;
+            background: var(--accent);
+            box-shadow: var(--accent-glow);
+        }
+
+        .app-card p {
+            margin-bottom: 1.5rem;
+            color: var(--light);
+            opacity: 0.8;
+        }
+
+        .download-btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .download-btn {
+            background: linear-gradient(45deg, var(--accent), var(--secondary));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.4s ease;
         }
 
         .download-btn:hover {
-            transform: scale(1.05);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(253, 33, 85, 0.4);
         }
 
-        footer {
-            background: linear-gradient(45deg, #2d3436, #1a1a1a);
+        .download-btn:hover::before {
+            left: 100%;
+        }
+
+        .coming-soon {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .coming-soon:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .coming-soon::before {
+            display: none;
+        }
+
+        .footer {
+            background: rgba(5, 5, 16, 0.8);
+            backdrop-filter: blur(10px);
             padding: 3rem 1rem;
-            margin-top: 5rem;
+            margin-top: 6rem;
+            border-top: 1px solid rgba(14, 231, 255, 0.3);
+            position: relative;
         }
 
         .footer-content {
@@ -155,69 +388,362 @@
             text-align: center;
         }
 
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        .footer h3 {
+            color: var(--primary);
+            text-shadow: var(--neon-glow);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .footer p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .footer a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            padding: 0 10px;
+        }
+
+        .footer a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 1px solid rgba(14, 231, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(14, 231, 255, 0.3);
+        }
+
+        .social-links i {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .mouse-cursor {
+            position: fixed;
+            left: 0;
+            top: 0;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            box-shadow: var(--neon-glow);
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            transition: all 0.1s ease;
+            box-shadow: var(--neon-glow);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+            .hero {
+                padding: 8rem 1rem 4rem;
             }
             
             .app-grid {
                 grid-template-columns: 1fr;
+                padding: 0 1.5rem;
             }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: var(--darker);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: all 0.5s ease;
+                z-index: 100;
+                backdrop-filter: blur(10px);
+                border-left: 1px solid rgba(14, 231, 255, 0.3);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links a {
+                margin: 1.5rem 0;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .app-card {
+                padding: 1.5rem;
+            }
+
+            .app-icon {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .animate-delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .animate-delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Glowing text effect for buttons */
+        .glow-effect {
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.3);
         }
     </style>
 </head>
 <body>
+    <div class="mouse-cursor">
+        <div class="cursor-dot"></div>
+        <div class="cursor-outline"></div>
+    </div>
+
     <header class="header">
         <nav class="nav">
-            <div class="logo">Eman.dev</div>
-            <div class="nav-links">
-                <a class= "contact-link" href="index.html" style="color: white">Home</a>
-                <a class= "contact-link" href="downloadcenter.html" style="color: white; margin-left: 2rem">Apps</a>
-                <a class= "contact-link" href="contact.html" style="color: white; margin-left: 2rem">Contact</a>
+            <a href="index.html" class="logo">Eman.dev</a>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="contact-link">Home</a>
+                <a href="downloadcenter.html" class="contact-link">Apps</a>
+                <a href="contact.html" class="contact-link">Contact</a>
             </div>
         </nav>
     </header>
 
     <section class="hero">
-        <h1>Discover Amazing Apps</h1>
-        <p>Download premium mobile experiences, crafted with passion</p>
+        <div class="particles" id="particles"></div>
+        <h1 class="animate-fadeInUp">Discover Amazing Apps</h1>
+        <p class="animate-fadeInUp animate-delay-1">Download premium mobile experiences, crafted with passion</p>
     </section>
 
     <main class="app-grid">
         <!-- App Card 1 -->
-        <div class="app-card">
+        <div class="app-card animate-fadeInUp animate-delay-1 animate-float">
             <img src="icon.png" alt="App Icon" class="app-icon">
             <h2>ToDo's</h2>
-            <p>Minimalistic to do tasks Manager with simple UI & no ads</p>
-            <button class="download-btn" onclick="downloadApp('ToDo.apk')">
-                <i class="fas fa-download"></i> Download Now<br>(*Android)
-            </button>
-            <button class="download-btn" onclick="downloadApp('.apk')">
-                <i class="fas fa-download"></i> Download Now<br>(*IoS)Coming Soon
-            </button>
+            <p>Minimalistic to-do task manager with clean UI & zero ads</p>
+            <div class="download-btn-container">
+                <button class="download-btn" onclick="downloadApp('ToDo.apk')">
+                    <i class="fab fa-android"></i> Download for Android
+                </button>
+                <button class="download-btn coming-soon">
+                    <i class="fab fa-apple"></i> iOS Version Coming Soon
+                </button>
+            </div>
         </div>
 
-        <!-- Add more app cards here -->
+        <!-- App Card 2 (Example) -->
+        <div class="app-card animate-fadeInUp animate-delay-2 animate-float">
+            <img src="icon.png" alt="App Icon" class="app-icon">
+            <h2>Focus Timer</h2>
+            <p>Enhance productivity with this beautifully designed Pomodoro timer</p>
+            <div class="download-btn-container">
+                <button class="download-btn" onclick="downloadApp('FocusTimer.apk')">
+                    <i class="fab fa-android"></i> Download for Android
+                </button>
+                <button class="download-btn coming-soon">
+                    <i class="fab fa-apple"></i> iOS Version Coming Soon
+                </button>
+            </div>
+        </div>
+
+        <!-- App Card 3 (Example) -->
+        <div class="app-card animate-fadeInUp animate-delay-3 animate-float">
+            <img src="icon.png" alt="App Icon" class="app-icon">
+            <h2>NightSky</h2>
+            <p>Discover stars and constellations with this augmented reality sky map</p>
+            <div class="download-btn-container">
+                <button class="download-btn" onclick="downloadApp('NightSky.apk')">
+                    <i class="fab fa-android"></i> Download for Android
+                </button>
+                <button class="download-btn coming-soon">
+                    <i class="fab fa-apple"></i> iOS Version Coming Soon
+                </button>
+            </div>
+        </div>
     </main>
 
-    <footer>
+    <footer class="footer">
         <div class="footer-content">
             <h3>Eman.dev</h3>
             <p>© 2025 All rights reserved</p>
             <div style="margin-top: 1rem">
-                <a href="contact.html" style="color: white; text-decoration: none">Contact</a> | 
-                <a href="#privacy" style="color: white; text-decoration: none">Privacy Policy</a>
+                <a href="contact.html">Contact</a> | 
+                <a href="#privacy">Privacy Policy</a>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        // JavaScript
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+
+        // // Custom cursor
+        // const cursorDot = document.querySelector('.cursor-dot');
+        // const cursorOutline = document.querySelector('.cursor-outline');
+
+        // window.addEventListener('mousemove', (e) => {
+        //     cursorDot.style.left = e.clientX + 'px';
+        //     cursorDot.style.top = e.clientY + 'px';
+            
+        //     // Add a small delay to the outline for a more fluid effect
+        //     setTimeout(() => {
+        //         cursorOutline.style.left = e.clientX + 'px';
+        //         cursorOutline.style.top = e.clientY + 'px';
+        //     }, 50);
+        // });
+
+        // Hover effects for links and interactive elements
+        const interactiveElements = document.querySelectorAll('a, button:not(.coming-soon), .app-card');
+
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorOutline.style.width = '60px';
+                cursorOutline.style.height = '60px';
+                cursorOutline.style.borderColor = 'var(--accent)';
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                cursorOutline.style.width = '40px';
+                cursorOutline.style.height = '40px';
+                cursorOutline.style.borderColor = 'var(--primary)';
+            });
+        });
+
+        // Download function with futuristic confirmation
         function downloadApp(apkFileName) {
             // Create temporary link
             const link = document.createElement('a');
@@ -232,11 +758,141 @@
             // Show confirmation
             Swal.fire({
                 icon: 'success',
-                title: 'Download Started!',
+                title: 'Download Initiated',
                 text: 'Your app will begin downloading shortly',
-                confirmButtonColor: '#6c5ce7'
+                confirmButtonColor: '#0ee7ff',
+                background: 'rgba(10, 10, 40, 0.9)',
+                backdrop: `
+                    rgba(5, 5, 16, 0.6)
+                    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%230ee7ff' fill-opacity='0.1' d='M0,192L48,208C96,224,192,256,288,250.7C384,245,480,203,576,181.3C672,160,768,160,864,170.7C960,181,1056,203,1152,202.7C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E")
+                    center bottom
+                    no-repeat
+                `,
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
             });
         }
+
+        // Particles background
+        if (typeof particlesJS !== 'undefined') {
+            particlesJS('particles', {
+                particles: {
+                    number: {
+                        value: 80,
+                        density: {
+                            enable: true,
+                            value_area: 800
+                        }
+                    },
+                    color: {
+                        value: "#0ee7ff"
+                    },
+                    shape: {
+                        type: "circle",
+                        stroke: {
+                            width: 0,
+                            color: "#000000"
+                        }
+                    },
+                    opacity: {
+                        value: 0.3,
+                        random: true,
+                        anim: {
+                            enable: true,
+                            speed: 1,
+                            opacity_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    size: {
+                        value: 3,
+                        random: true,
+                        anim: {
+                            enable: true,
+                            speed: 2,
+                            size_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: "#0ee7ff",
+                        opacity: 0.2,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 1,
+                        direction: "none",
+                        random: true,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false,
+                        attract: {
+                            enable: false,
+                            rotateX: 600,
+                            rotateY: 1200
+                        }
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: {
+                            enable: true,
+                            mode: "grab"
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: "push"
+                        },
+                        resize: true
+                    },
+                    modes: {
+                        grab: {
+                            distance: 140,
+                            line_linked: {
+                                opacity: 0.5
+                            }
+                        },
+                        push: {
+                            particles_nb: 3
+                        }
+                    }
+                },
+                retina_detect: true
+            });
+        }
+
+        // Check for mobile devices to disable custom cursor
+        function isMobileDevice() {
+            return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+        }
+        
+        if (isMobileDevice()) {
+            document.querySelector('.mouse-cursor').style.display = 'none';
+        }
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.app-card').forEach(card => {
+            observer.observe(card);
+        });
 
         // Add smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -248,8 +904,5 @@
             });
         });
     </script>
-    
-    <!-- Add SweetAlert for beautiful alerts -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
