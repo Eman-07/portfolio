@@ -5,34 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Eman</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
-         /* CSS */
-         :root {
-            --primary: #6c5ce7;
-            --secondary: #a66efa;
-            --accent: #ff7675;
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600&display=swap');
+        
+        :root {
+            --primary: #4361ee;
+            --secondary: #7209b7;
+            --accent: #f72585;
+            --background: #0a0a0f;
+            --card-bg: rgba(16, 18, 27, 0.8);
+            --text: #e5e5e5;
+            --glow: 0 0 10px rgba(67, 97, 238, 0.6);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Rajdhani', sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, #1a1a1a, #2d3436);
-            color: white;
+            background-color: var(--background);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(67, 97, 238, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(114, 9, 183, 0.1) 0%, transparent 30%);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
         .header {
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            padding: 0.5rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
             position: sticky;
             top: 0;
             z-index: 100;
-            
+            border-bottom: 1px solid rgba(67, 97, 238, 0.2);
         }
 
         .nav {
@@ -40,125 +53,395 @@
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
-        
-            
-        }
-        .nav a{
-            text-decoration: none;
-            margin-right: 20px;
-            color: white;
+            align-items: center;
         }
 
         .logo {
-            font-size: 1rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
             font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
         }
 
-
-        .theme-btn {
-            background: none;
-            border: none;
-            font-size: 1.2rem;
-            cursor: pointer;
-            color: var(--text);
+        .logo::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--accent), transparent);
         }
 
-        .contact-section {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 2rem;
-            text-align: center;
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
         }
 
         .contact-link {
-            color: var(--text);
             text-decoration: none;
+            color: var(--text);
+            font-size: 1.1rem;
             position: relative;
             padding: 0.5rem 0;
             transition: color 0.3s ease;
+            letter-spacing: 1px;
         }
 
-        .contact-link::after {
+        .contact-link::before {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        .contact-link:hover::after {
-            width: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.4s cubic-bezier(0.65, 0, 0.35, 1);
         }
 
         .contact-link:hover {
             color: var(--accent);
         }
 
-        .footer-content {
+        .contact-link:hover::before {
+            width: 100%;
+        }
+
+        .contact-section {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 2rem auto 4rem;
+            padding: 2rem;
             text-align: center;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            bottom: -15px;
+            left: 20%;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--accent), transparent);
         }
 
         .social-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
             margin-top: 3rem;
+            perspective: 1000px;
         }
 
         .social-card {
             background: var(--card-bg);
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             border-radius: 15px;
             text-decoration: none;
             color: var(--text);
-            transition: transform 0.3s;
+            transition: all 0.4s cubic-bezier(0.17, 0.67, 0.83, 0.67);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            gap: 1.2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            transform: translateZ(0);
+        }
+
+        .social-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(67, 97, 238, 0.1),
+                transparent
+            );
+            transform: rotate(45deg);
+            transition: transform 0.6s ease;
+            pointer-events: none;
         }
 
         .social-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-15px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(67, 97, 238, 0.4);
+            border-color: rgba(67, 97, 238, 0.3);
+        }
+
+        .social-card:hover::before {
+            transform: rotate(45deg) translateX(50%);
         }
 
         .social-card i {
-            font-size: 2.5rem;
-            color: var(--primary);
+            font-size: 3rem;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .social-card:hover i {
+            transform: scale(1.2);
+            text-shadow: var(--glow);
+        }
+
+        .social-card span {
+            font-size: 1.3rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .social-card:hover span {
+            color: white;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 4rem auto 0;
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(67, 97, 238, 0.2);
+        }
+
+        .footer-content h3 {
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .footer-content p {
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 0.7rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Mobile menu */
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text);
+            transition: color 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            color: var(--accent);
         }
 
         @media (max-width: 768px) {
+            .header {
+                padding: 1rem;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                flex-direction: column;
+                justify-content: center;
+                background: rgba(10, 10, 15, 0.95);
+                backdrop-filter: blur(10px);
+                transition: right 0.5s ease;
+                z-index: 101;
+                box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+                border-left: 1px solid rgba(67, 97, 238, 0.2);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .close-menu {
+                position: absolute;
+                top: 2rem;
+                right: 2rem;
+                font-size: 1.8rem;
+                cursor: pointer;
+                color: var(--text);
+            }
+            
+            .contact-link {
+                font-size: 1.3rem;
+                margin: 1rem 0;
+            }
+            
             .social-grid {
                 grid-template-columns: 1fr;
             }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .social-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .social-card i {
+                font-size: 2.5rem;
+            }
+            
+            .social-card span {
+                font-size: 1.1rem;
+            }
+        }
+        
+        /* Animations */
+        .slide-in-left {
+            animation: slideInLeft 0.8s forwards;
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 0.8s forwards;
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .stagger-fade-in > * {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Cursor glow effect */
+        .glow-cursor {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            position: fixed;
+            pointer-events: none;
+            mix-blend-mode: screen;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s;
+            z-index: 9999;
+            opacity: 0.7;
+            filter: blur(5px);
         }
     </style>
 </head>
 <body>
+    <div class="glow-cursor"></div>
+    
     <header class="header">
         <nav class="nav">
-            <div class="logo">Eman.dev</div>
-            <div class="nav-links">
-                <!-- <button id="themeToggle" class="theme-btn">
-                    <i class="fas fa-moon"></i>
-                </button> -->
-                <a class= "contact-link" href="index.html" class="contact-link">Home</a>
-                <a class= "contact-link" href="downloadcenter.html" class="contact-link">Apps</a>
-                <a class= "contact-link" href="contact.html" class="contact-link">Contact</a>
+            <div class="logo slide-in-left">Eman.dev</div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="nav-links slide-in-right">
+                <div class="close-menu">
+                    <i class="fas fa-times"></i>
+                </div>
+                <a href="index.html" class="contact-link">Home</a>
+                <a href="downloadcenter.html" class="contact-link">Apps</a>
+                <a href="contact.html" class="contact-link">Contact</a>
             </div>
         </nav>
     </header>
 
     <section class="contact-section">
-        <h1>Connect With Me</h1>
-        <div class="social-grid">
+        <h1 class="fade-in-up">Connect With Me</h1>
+        <div class="social-grid stagger-fade-in">
             <a href="https://github.com/Eman-07" target="_blank" class="social-card">
                 <i class="fab fa-github"></i>
                 <span>GitHub</span>
@@ -181,39 +464,93 @@
             </a>
         </div>
 
-
         <footer>
-            <div class="footer-content">
+            <div class="footer-content fade-in-up">
                 <h3>Eman.dev</h3>
                 <p>© 2025 All rights reserved</p>
-                <div style="margin-top: 1rem">
-                    <a href="contact.html" style="color: white; text-decoration: none">Contact</a> | 
-                    <a href="#privacy" style="color: white; text-decoration: none">Privacy Policy</a>
+                <div class="footer-links">
+                    <a href="contact.html">Contact</a> | 
+                    <a href="#privacy">Privacy Policy</a>
                 </div>
             </div>
         </footer>
     </section>
 
-    
-
     <script>
-        // Dark Mode Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
-
-        function toggleTheme() {
-            const isDark = body.getAttribute('data-theme') === 'dark';
-            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-            themeToggle.innerHTML = isDark ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
-            localStorage.setItem('theme', isDark ? 'light' : 'dark');
-        }
-
-        // Load saved theme
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        body.setAttribute('data-theme', savedTheme);
-        themeToggle.innerHTML = savedTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-
-        themeToggle.addEventListener('click', toggleTheme);
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const closeMenu = document.querySelector('.close-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.add('active');
+        });
+        
+        closeMenu.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+        
+        // Staggered animation for social cards
+        const cards = document.querySelectorAll('.stagger-fade-in > *');
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.animation = `fadeInUp 0.8s forwards ${index * 0.15}s`;
+                    }, 300);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        cards.forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Cursor glow effect
+        const cursor = document.querySelector('.glow-cursor');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+        
+        document.addEventListener('mousedown', () => {
+            cursor.style.width = '50px';
+            cursor.style.height = '50px';
+        });
+        
+        document.addEventListener('mouseup', () => {
+            cursor.style.width = '20px';
+            cursor.style.height = '20px';
+        });
+        
+        // Hover effect for cards
+        document.querySelectorAll('.social-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const angleX = (y - centerY) / 10;
+                const angleY = (centerX - x) / 10;
+                
+                card.style.transform = `translateY(-15px) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
     </script>
 </body>
 </html>
